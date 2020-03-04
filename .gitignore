@@ -13,3 +13,4 @@ public/icons/*
 .env
 certs
 tmp
+!readme.md
