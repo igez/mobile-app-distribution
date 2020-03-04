@@ -1,0 +1,54 @@
+version: "3"
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    volumes:
+      - app_builds_data:/app/builds
+      - app_public_data:/app/public
+    environment:
+      APP_PORT: 3000
+      APP_ENV: production
+      APP_URL: "https://domain.com"
+      WEBTOKEN_SECRET_KEY: uAsBw6WxqD
+      WEBTOKEN_EXPIRATION_TIME: 604800
+      DB_URL: "mongodb://root:password@db:27017/db"
+      BUILD_DOWNLOAD_SCHEMA: "d"
+      UPLOAD_PATH: "builds"
+      UPLOAD_MAX_SIZE: "500000000"
+      PUBLIC_PATH: "public"
+    networks:
+      - app_bridge
+  db:
+    image: mongo:3.6.17
+    environment:
+      MONGO_INITDB_DATABASE: db
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - app_mongodb_data:/data/db
+      - ./.docker/mongo:/docker-entrypoint-initdb.d
+    networks:
+      - app_bridge
+    ports:
+      - "27112:27017"
+  haproxy:
+    build: .docker/haproxy/
+    links:
+      - app
+    ports:
+      - "443:443"
+    networks:
+      - app_bridge
+
+volumes:
+  app_mongodb_data:
+  app_builds_data:
+  app_public_data:
+
+networks:
+  app_bridge:
+    driver: bridge

@@ -1,0 +1,15 @@
+*.ipa
+*.apk
+node_modules
+.docker/certs
+!.docker/certs/.gitkeep
+builds/ios/*
+builds/android/*
+!builds/ios/.gitkeep
+!builds/android/.gitkeep
+public/icons/*
+!public/icons/.gitkeep
+.vscode
+.env
+certs
+tmp

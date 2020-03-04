@@ -1,0 +1,12 @@
+{
+  "execMap": {
+    "ts": "ts-node -r dotenv/config -r tsconfig-paths/register"
+  },
+  "ignore": [".git", "node_modules", "server/src/dist"],
+  "watch": [".env", "server/src"],
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": "3000"
+  },
+  "ext": "ts"
+}

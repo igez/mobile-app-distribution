@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ build.info.appName }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      .app-wrapper {
+        padding: 48px;
+        {{!-- border: 1px solid #ddd; --}}
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="app-wrapper d-flex flex-column align-items-center">
+        <img src="{{ build.info.thumbnail }}" />
+        <span class="mt-3">
+          <strong>{{ build.info.appName }}</strong>
+        </span>
+        <span><small>{{ build.info.version }} ({{ build.info.buildNumber }})</small></span>
+        <a href="itms-services://?action=download-manifest&url={{appUrl}}/d/plist/{{buildId}}" class="btn btn-primary btn-lg mt-3">Download</a>
+
+      </div>
+    </div>
+  </body>
+</html>
