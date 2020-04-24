@@ -18,7 +18,7 @@ RUN yarn global add pm2
 COPY . .
 COPY yarn.lock package.json ./
 # speed up build by reading purely from lockfile and used previous yarn cache
-RUN yarn --pure-lockfile --cache-folder /root/app/.yarn-cache
+RUN yarn --pure-lockfile --cache-folder .yarn-cache
 
 RUN yarn build
 

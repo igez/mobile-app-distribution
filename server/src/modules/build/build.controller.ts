@@ -158,6 +158,11 @@ export class BuildController {
 
     await this.getManifestUrl(file, info.appId);
 
-    return await this.buildService.create(build);
+    const response = await this.buildService.create(build);
+
+    return {
+      err: false,
+      payload: `${this.configService.get('APP_URL')}/d/${response.id}`
+    }
   }
 }
