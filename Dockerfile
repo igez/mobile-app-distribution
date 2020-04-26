@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM node:erbium
 
 LABEL maintainer="Robby Prima Suherlan robbyprima@gmail.com"
 
