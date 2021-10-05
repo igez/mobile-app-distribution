@@ -30,7 +30,7 @@
     "class-transformer": "^0.2.3",
     "class-validator": "^0.11.0",
     "dotenv": "^8.2.0",
-    "fastify-static": "^2.6.0",
+    "fastify-static": "^4.2.4",
     "fastify-swagger": "^2.5.0",
     "hbs": "^4.1.0",
     "mime": "^2.4.4",
